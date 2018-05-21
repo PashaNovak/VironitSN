@@ -9,6 +9,6 @@ public class DummyActivity extends MvpAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new Handler().postDelayed(() -> this.finish(),500);
+        new Handler().postDelayed(this::finish,500);
     }
 }
