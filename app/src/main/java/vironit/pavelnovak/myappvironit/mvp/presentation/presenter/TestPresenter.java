@@ -25,4 +25,8 @@ public class TestPresenter extends BaseAppPresenter<ITestView> {
                     getViewState().hideProgress();
                 }, throwable -> throwable.printStackTrace());
     }
+
+    public void asdas(){
+        getViewState().hideProgress();
+    }
 }

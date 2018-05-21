@@ -26,8 +26,4 @@ public class SplashActivity extends MvpAppCompatActivity implements SplashView {
         TestActivity.start(this);
     }
 
-
-
-
-
 }

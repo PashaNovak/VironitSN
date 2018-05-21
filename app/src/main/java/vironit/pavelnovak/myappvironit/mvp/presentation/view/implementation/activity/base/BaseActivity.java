@@ -1,6 +1,7 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.IdRes;
@@ -14,14 +15,39 @@ import android.view.View;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import dagger.android.AndroidInjection;
+import io.reactivex.Scheduler;
+import vironit.pavelnovak.myappvironit.constants.IAppConstants;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
+import vironit.pavelnovak.myappvironit.utils.AppLog;
 import vironit.pavelnovak.myappvironit.utils.KeyboardUtil;
 import vironit.pavelnovak.myappvironit.utils.ShowDialogUtil;
 import vironit.pavelnovak.myappvironit.utils.ShowSnackBarUtil;
 import vironit.pavelnovak.myappvironit.R;
 
 public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCompatActivity implements IBaseView {
+
+    @Inject
+    @Named(IAppConstants.COMPUTATION_SCHEDULER)
+    protected Scheduler mComputationScheduler;
+
+    @Inject
+    @Named(IAppConstants.IO_SCHEDULER)
+    protected Scheduler mIOScheduler;
+
+    @Inject
+    @Named(IAppConstants.UI_SCHEDULER)
+    protected Scheduler mUIScheduler;
+
+    @Inject
+    ResourcesManager mResourcesManager;
+
+    protected abstract P getPresenter();
 
     @Nullable
     private AlertDialog mDialog;
@@ -39,8 +65,24 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppLog.logActivity(this);
+
+        AndroidInjection.inject(this);
+
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        getPresenter().onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getPresenter().onActivityResult(requestCode, resultCode, data, this);
     }
 
     @Override

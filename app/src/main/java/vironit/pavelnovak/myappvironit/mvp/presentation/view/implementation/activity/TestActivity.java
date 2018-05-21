@@ -25,6 +25,11 @@ public class TestActivity extends BaseActivity<TestPresenter> implements ITestVi
     }
 
     @Override
+    protected TestPresenter getPresenter() {
+        return mTestPresenter;
+    }
+
+    @Override
     public int getLayoutResId() {
         return R.layout.layout_test_actvity;
     }
@@ -58,7 +63,7 @@ public class TestActivity extends BaseActivity<TestPresenter> implements ITestVi
                 .setOnClickListener(v -> showMessage("message_with_action", false
                         , "message_with_action", v1 -> Toast.makeText(this,"actionText",Toast.LENGTH_SHORT).show()));
 
-       findViewById(R.id.btn_show_avtoclosable_message)
-               .setOnClickListener(v -> showAutocloseableMessage("klhlkhlk"));
+        findViewById(R.id.btn_show_avtoclosable_message)
+                .setOnClickListener(v -> mTestPresenter.asdas());
     }
 }
