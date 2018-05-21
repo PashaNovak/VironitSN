@@ -22,6 +22,7 @@ public class ResourcesManagerImpl implements ResourcesManager {
         try {
             str = mAppContext.getString(strResId);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return str != null ? str : "";
     }
@@ -33,6 +34,7 @@ public class ResourcesManagerImpl implements ResourcesManager {
         try {
             str = mAppContext.getString(resId, formatArgs);
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return str != null ? str : "";
