@@ -19,7 +19,7 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBa
 import vironit.pavelnovak.myappvironit.utils.KeyboardUtil;
 import vironit.pavelnovak.myappvironit.utils.ShowDialogUtil;
 import vironit.pavelnovak.myappvironit.utils.ShowSnackBarUtil;
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 
 public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCompatActivity implements IBaseView {
 

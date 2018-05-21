@@ -1,4 +1,4 @@
-package vironit.poddubnaya.myappvironit;
+package vironit.pavelnovak.myappvironit;
 
 import org.junit.Test;
 

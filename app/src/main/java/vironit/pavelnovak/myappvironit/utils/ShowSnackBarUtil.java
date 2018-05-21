@@ -9,7 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 
 public abstract class ShowSnackBarUtil {
     @Nullable

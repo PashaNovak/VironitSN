@@ -2,7 +2,7 @@ package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.act
 
 import android.content.Intent;
 
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.constants.IAppConstants;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 

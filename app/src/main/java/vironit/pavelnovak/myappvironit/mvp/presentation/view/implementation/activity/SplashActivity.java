@@ -6,7 +6,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.SplashPresenter;
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.SplashView;
 
 public class SplashActivity extends MvpAppCompatActivity implements SplashView {

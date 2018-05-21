@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.support.annotation.NonNull;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BasePresenter;
-import vironit.poddubnaya.myappvironit.BuildConfig;
+import vironit.pavelnovak.myappvironit.BuildConfig;
 
 public abstract class AppLog {
 

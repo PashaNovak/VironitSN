@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.TestPresenter;
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.ITestView;
 

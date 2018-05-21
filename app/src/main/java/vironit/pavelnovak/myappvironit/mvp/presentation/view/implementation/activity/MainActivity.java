@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.MainPresenter;
-import vironit.poddubnaya.myappvironit.R;
+import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.IMainView;
 
