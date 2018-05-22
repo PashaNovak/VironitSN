@@ -7,7 +7,12 @@
         чтобы впустил меня и закрывал дверь, иначе меня сожрут. Собаки ушли через полчаса. До электрика не дозвонился, розетку отрубил сам. Экзамен сдал. </string>
     <string name="empty_string"> </string>
 
-    <string name="progress_title">Wait...</string>
+    <string name="progress_title">Wait…</string>
     <string name="press_again_to_exit">Press back again to exit</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_login_text">LOGIN</string>
+
+    <string name="facebook_app_id"></string>
 
 </resources>

@@ -23,7 +23,7 @@ public class SplashActivity extends MvpAppCompatActivity implements SplashView {
 
     @Override
     public void navigateToLoginScreen() {
-        TestActivity.start(this);
+        LoginActivity.start(this);
     }
 
 }

@@ -11,6 +11,8 @@ import vironit.pavelnovak.myappvironit.di.modules.InteractorModule;
 import vironit.pavelnovak.myappvironit.di.modules.ManagerModule;
 import vironit.pavelnovak.myappvironit.di.modules.RepositoryModule;
 import vironit.pavelnovak.myappvironit.di.modules.SchedulersModule;
+import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.LoginPresenter;
+import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.TestPresenter;
 
 @Singleton
 @Component(modules = {SchedulersModule.class,
@@ -23,6 +25,10 @@ import vironit.pavelnovak.myappvironit.di.modules.SchedulersModule;
 public interface AppComponent {
 
     void inject(App app);
+
+    void inject(TestPresenter testPresenter);
+
+    void inject(LoginPresenter loginPresenter);
 
     @Component.Builder
     interface Builder{

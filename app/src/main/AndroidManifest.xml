@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
         <activity android:name="vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.SplashActivity"
             android:theme="@style/AppTheme.Splash"
             android:noHistory="true"
@@ -28,7 +31,7 @@
             android:noHistory="true"/>
 
         <activity android:name="vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.TestActivity"/>
-
+        <activity android:name=".mvp.presentation.view.implementation.activity.LoginActivity"/>
 
     </application>
 
