@@ -58,7 +58,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         AppLog.logPresenter(LoginPresenter.this);
-
+                        getViewState().showSuccessMessage();
                     }
 
                     @Override
@@ -69,6 +69,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
                     @Override
                     public void onError(FacebookException error) {
                         AppLog.logPresenter(LoginPresenter.this);
+                        getViewState().showFailMessage();
                     }
                 });
     }
@@ -79,13 +80,13 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
             @Override
             public void success(Result<TwitterSession> result) {
                 AppLog.logPresenter(LoginPresenter.this);
-
+                getViewState().showSuccessMessage();
             }
 
             @Override
             public void failure(TwitterException exception) {
                 AppLog.logPresenter(LoginPresenter.this);
-
+                getViewState().showFailMessage();
             }
         });
     }
@@ -97,10 +98,12 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
 
     private void handleSignInResultGoogle(Task<GoogleSignInAccount> competedTask) {
         try {
-            GoogleSignInAccount googleSignInAccount = competedTask.getResult(ApiException.class);
             AppLog.logPresenter(LoginPresenter.this);
+            GoogleSignInAccount googleSignInAccount = competedTask.getResult(ApiException.class);
+            getViewState().showSuccessMessage();
         } catch (ApiException e) {
             AppLog.logPresenter(LoginPresenter.this);
+            getViewState().showFailMessage();
         }
     }
 
