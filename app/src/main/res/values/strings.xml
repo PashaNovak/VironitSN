@@ -14,5 +14,8 @@
     <string name="btn_login_text">LOGIN</string>
 
     <string name="facebook_app_id"></string>
+    <string name="btn_registration_text">CREATE AN ACCOUNT</string>
+    <string name="success_login">Login success!</string>
+    <string name="error_login">Login error!</string>
 
 </resources>

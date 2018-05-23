@@ -1,5 +1,6 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces;
 
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
@@ -7,5 +8,9 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBa
 
 @StateStrategyType(SkipStrategy.class)
 public interface ILoginView extends IBaseView{
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showSuccessMessage();
 
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showFailMessage();
 }

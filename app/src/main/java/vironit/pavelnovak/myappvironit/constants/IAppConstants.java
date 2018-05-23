@@ -11,4 +11,6 @@ public interface IAppConstants {
     String FACEBOOK = "FACEBOOK";
     String TWITTER = "TWITTER";
     String GOOGLE = "GOOGLE";
+
+    int RC_SIGN_IN = 9001;
 }

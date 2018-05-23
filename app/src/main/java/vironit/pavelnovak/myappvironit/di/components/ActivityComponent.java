@@ -7,4 +7,5 @@ import vironit.pavelnovak.myappvironit.di.modules.ActivityModule;
 @ActivityScope
 @Component(modules = {ActivityModule.class}, dependencies = {AppComponent.class})
 public interface ActivityComponent {
+
 }

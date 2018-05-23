@@ -61,24 +61,42 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/if_google_circle_2"/>
 
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding"
+                android:src="@drawable/if_facebook_circle_2"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/btn_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding"
+                android:src="@drawable/if_twitter_circle_2"/>
 
         </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/btn_google"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/common_google_signin_btn_icon_light_normal"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/btn_facebook"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/if_facebook_circle"/>
+            android:layout_marginBottom="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginTop="@dimen/default_padding"
+            android:background="@drawable/btns_login_activity_background"
+            android:text="@string/btn_registration_text"
+            android:textColor="@color/color_white" />
 
     </LinearLayout>
 
