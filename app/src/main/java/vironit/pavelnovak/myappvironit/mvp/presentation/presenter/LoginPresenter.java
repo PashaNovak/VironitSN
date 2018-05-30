@@ -23,6 +23,8 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 
+import java.util.Collections;
+
 import javax.inject.Inject;
 
 import vironit.pavelnovak.myappvironit.App;
@@ -52,6 +54,8 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
 
     public void facebookBtnClicked(@NonNull Activity activity) {
         selectedLoginButton = IAppConstants.FACEBOOK;
+        LoginManager.getInstance().logInWithPublishPermissions(activity,
+                Collections.singletonList("public_profile"));
         mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager,
                 new FacebookCallback<LoginResult>() {
@@ -63,7 +67,8 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
 
                     @Override
                     public void onCancel() {
-
+                        AppLog.logPresenter(LoginPresenter.this);
+                        getViewState().showFailMessage();
                     }
 
                     @Override

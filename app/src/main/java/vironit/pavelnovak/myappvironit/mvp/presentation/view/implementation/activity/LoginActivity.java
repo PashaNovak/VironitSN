@@ -70,4 +70,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     public void showFailMessage() {
         showDialogMessage(getString(R.string.error_login),true);
     }
+
+    @Override
+    public void showInputError() {
+
+    }
 }

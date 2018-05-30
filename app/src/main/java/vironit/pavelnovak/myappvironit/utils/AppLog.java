@@ -6,6 +6,7 @@ import android.util.Log;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BasePresenter;
 import vironit.pavelnovak.myappvironit.BuildConfig;
+import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.base.BaseFragment;
 
 public abstract class AppLog {
 
@@ -14,6 +15,12 @@ public abstract class AppLog {
     public static void logPresenter(@NonNull BasePresenter presenter){
         if (isLogEnabled()){
             Log.i(getTag(APP_TAG), getInfo(presenter));
+        } else Log.i(getTag(APP_TAG), "isLogEnabled false");
+    }
+
+    public static void logFragment(@NonNull BaseFragment fragment){
+        if (isLogEnabled()){
+            Log.i(getTag(APP_TAG), getInfo(fragment));
         } else Log.i(getTag(APP_TAG), "isLogEnabled false");
     }
 

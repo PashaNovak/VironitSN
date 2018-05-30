@@ -1,6 +1,7 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
@@ -21,7 +22,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
 
     @Override
     public int getRootViewResId() {
-        return R.id.main_activity_root_view;
+        return R.id.v_root_main_activity;
     }
 
     @Override
@@ -33,5 +34,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements IMainVi
     @Override
     protected MainPresenter getPresenter() {
         return mMainPresenter;
+    }
+
+    @Override
+    public void showSelectedFragment(Fragment fragment) {
+
     }
 }

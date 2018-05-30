@@ -13,4 +13,6 @@ public interface ILoginView extends IBaseView{
 
     @StateStrategyType(OneExecutionStateStrategy.class)
     void showFailMessage();
+
+    void showInputError();
 }

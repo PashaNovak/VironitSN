@@ -12,6 +12,7 @@ import vironit.pavelnovak.myappvironit.di.modules.ManagerModule;
 import vironit.pavelnovak.myappvironit.di.modules.RepositoryModule;
 import vironit.pavelnovak.myappvironit.di.modules.SchedulersModule;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.LoginPresenter;
+import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.ProfilePresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.TestPresenter;
 
 @Singleton
@@ -29,6 +30,8 @@ public interface AppComponent {
     void inject(TestPresenter testPresenter);
 
     void inject(LoginPresenter loginPresenter);
+
+    void inject(ProfilePresenter profilePresenter);
 
     @Component.Builder
     interface Builder{
