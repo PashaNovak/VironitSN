@@ -13,4 +13,10 @@ public interface IAppConstants {
     String GOOGLE = "GOOGLE";
 
     int RC_SIGN_IN = 9001;
+
+    long CONNECT_TIMEOUT_SECONDS = 15;
+    long READ_CONNECT_TIMEOUT_SECONDS = 20;
+    long WRITE_CONNECT_TIMEOUT_SECONDS = 20;
+
+    long CACH_SIZE = 20 * 1024 * 1024;
 }

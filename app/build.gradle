@@ -9,11 +9,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "FEEDS_API_KEY", FEEDS_API_KEY
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "IS_LOG_ENABLED", "false"
+            buildConfigField "String", "API_URL", API_URL_RELEASE
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+            buildConfigField "boolean", "IS_LOG_ENABLED", "true"
+            buildConfigField "String", "API_URL", API_URL_TEST
         }
     }
     compileOptions {

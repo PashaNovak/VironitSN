@@ -2,6 +2,8 @@ package vironit.pavelnovak.myappvironit.utils;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
 
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BasePresenter;
@@ -18,6 +20,19 @@ public abstract class AppLog {
         } else Log.i(getTag(APP_TAG), "isLogEnabled false");
     }
 
+    public static void logPresenter(@NonNull BasePresenter presenter, String message) {
+        //TODO
+        if (isLogEnabled()) {
+            Log.i(getTag(APP_TAG), message);
+        }
+    }
+    public static void logPresenter(@NonNull BasePresenter presenter,Throwable throwable) {
+        //TODO
+        if (isLogEnabled()) {
+            Log.i(getTag(APP_TAG), throwable.getMessage());
+        }
+    }
+
     public static void logFragment(@NonNull BaseFragment fragment){
         if (isLogEnabled()){
             Log.i(getTag(APP_TAG), getInfo(fragment));
@@ -30,8 +45,21 @@ public abstract class AppLog {
         } else Log.i(getTag(APP_TAG), "isLogEnabled false");
     }
 
-    private static boolean isLogEnabled(){
-        return BuildConfig.DEBUG;
+    public static void logObject(Class clazz, @Nullable String message) {
+        if (isLogEnabled()) {
+            Log.i(getTag(APP_TAG), clazz.getSimpleName() + "." + getMethodName() + " " + createMessage(message));
+        }
+    }
+
+    @NonNull
+    private static String createMessage(@Nullable String message) {
+        return !TextUtils.isEmpty(message) ? message : "thththyhy";
+
+    }
+
+    private static boolean isLogEnabled() {
+
+        return BuildConfig.DEBUG; //из своего проекта
     }
 
     private static String getMethodName() {
