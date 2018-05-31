@@ -19,7 +19,7 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop" />-->
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.view.ProfileAvatar
             android:id="@+id/profile_photo"
             android:layout_height="150dp"
             android:layout_width="150dp"

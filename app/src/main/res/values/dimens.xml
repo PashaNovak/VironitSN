@@ -13,4 +13,6 @@
 
     <dimen name="default_0_padding">0dp</dimen>
 
+    <dimen name="default_avatar_size">100dp</dimen>
+    <dimen name="default_radius">30dp</dimen>
 </resources>

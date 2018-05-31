@@ -11,6 +11,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.ProfilePresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.base.BaseFragment;
+import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.view.ProfileAvatar;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.fragment.IProfileFragment;
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> implements IProfileFragment{
@@ -29,7 +30,7 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements I
     }
 
     @BindView(R.id.profile_photo)
-    CircleImageView profilePhoto;
+    ProfileAvatar profilePhoto;
 
     public static ProfileFragment getInstance(){
         return new ProfileFragment();
