@@ -18,7 +18,7 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBa
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.utils.AppLog;
 
-public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter<View> {
+public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter<View> implements ResourcesManager {
 
     private final CompositeDisposable mLiteCompositeDisposable = new CompositeDisposable();
     private final CompositeDisposable mHardCompositeDisposable = new CompositeDisposable();

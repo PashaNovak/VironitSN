@@ -2,10 +2,16 @@ package vironit.pavelnovak.myappvironit.mvp.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import vironit.pavelnovak.myappvironit.App;
+import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
 import vironit.pavelnovak.myappvironit.mvp.model.interactor.interfaces.IFeedInteractor;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.feed.FeedPost;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.fragment.IFeedFragment;
 import vironit.pavelnovak.myappvironit.utils.AppLog;
@@ -23,18 +29,29 @@ public class FeedPresenter extends BaseAppPresenter<IFeedFragment> {
     @Override
     public void attachView(IFeedFragment view) {
         super.attachView(view);
-        loadNews();
+        //loadNews();
     }
 
-    private void loadNews() {
+    public void loadNews(int page, int pageSize) {
         getViewState().showProgress();
         addLiteDisposable(mIFeedInteractor.getFeeds()
                 .observeOn(mUIScheduler)
-                .doOnSuccess(list -> {
-                })
+                .doOnSuccess(list -> getViewState().onGetDataSuccess(list))
                 .doFinally(() -> getViewState().hideProgress())
                 .subscribe(list -> AppLog.logPresenter(this,"OOOOOKKKKK"),
                         throwable -> AppLog.logPresenter(this,throwable)));
+    }
+
+    public List<IItemFeed> parseArticles(List<Article> articleList) {
+        List<IItemFeed> resultList = new ArrayList<>();
+        for (Article article : articleList) {
+            resultList.add(new FeedPost(
+                    article.getTitle(),
+                    article.getDescription(),
+                    article.getUrlToImage()
+            ));
+        }
+        return resultList;
     }
 }
 

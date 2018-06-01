@@ -3,7 +3,10 @@ package vironit.pavelnovak.myappvironit.mvp.model.repository.dto;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
+import vironit.pavelnovak.myappvironit.adapters.feeds.TypeFeedEnum;
+
+public class Article implements IItemFeed {
     @SerializedName("source")
     @Expose
     private Source source;
@@ -52,5 +55,10 @@ public class Article {
 
     public String getPublishedAt() {
         return publishedAt;
+    }
+
+    @Override
+    public TypeFeedEnum getItemFeedType() {
+        return TypeFeedEnum.POST;
     }
 }

@@ -12,6 +12,8 @@ public interface IAppConstants {
     String TWITTER = "TWITTER";
     String GOOGLE = "GOOGLE";
 
+    int NO_STRING_RES = -1;
+
     int RC_SIGN_IN = 9001;
 
     long CONNECT_TIMEOUT_SECONDS = 15;

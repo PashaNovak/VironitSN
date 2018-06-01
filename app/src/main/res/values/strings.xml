@@ -26,6 +26,8 @@
     // Google sign in
     <string name="server_client_id"></string>
 
+    <string name="unknown_error">Неизвестная</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
