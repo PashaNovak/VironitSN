@@ -1,5 +1,7 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.presenter;
 
+import android.support.annotation.NonNull;
+
 import com.arellomobile.mvp.InjectViewState;
 
 import java.util.ArrayList;
@@ -52,6 +54,18 @@ public class FeedPresenter extends BaseAppPresenter<IFeedFragment> {
             ));
         }
         return resultList;
+    }
+
+    @NonNull
+    @Override
+    public String getString(int strResId) {
+        return null;
+    }
+
+    @NonNull
+    @Override
+    public String getString(int resId, @NonNull Object... formatArgs) {
+        return null;
     }
 }
 

@@ -64,7 +64,7 @@ public abstract class AppLog {
 
     private static String getMethodName() {
         try {
-            return Thread.currentThread().getStackTrace()[4].getMethodName();
+            return Thread.currentThread().getStackTrace()[5].getMethodName();
         } catch (Exception e){
             return "Unknown method";
         }

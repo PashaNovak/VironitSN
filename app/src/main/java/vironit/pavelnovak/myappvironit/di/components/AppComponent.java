@@ -5,10 +5,12 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import vironit.pavelnovak.myappvironit.App;
+import vironit.pavelnovak.myappvironit.di.modules.ApiModule;
 import vironit.pavelnovak.myappvironit.di.modules.AppActivitiesModule;
 import vironit.pavelnovak.myappvironit.di.modules.ApplicationModule;
 import vironit.pavelnovak.myappvironit.di.modules.InteractorModule;
 import vironit.pavelnovak.myappvironit.di.modules.ManagerModule;
+import vironit.pavelnovak.myappvironit.di.modules.ParseModule;
 import vironit.pavelnovak.myappvironit.di.modules.RepositoryModule;
 import vironit.pavelnovak.myappvironit.di.modules.RetrofitModule;
 import vironit.pavelnovak.myappvironit.di.modules.SNModule;
@@ -29,7 +31,9 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.frag
         AppActivitiesModule.class,
         ApplicationModule.class,
         SNModule.class,
-        RetrofitModule.class})
+        RetrofitModule.class,
+        ParseModule.class,
+        ApiModule.class})
 
 public interface AppComponent {
 

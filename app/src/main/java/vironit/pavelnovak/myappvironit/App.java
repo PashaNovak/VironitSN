@@ -2,8 +2,11 @@ package vironit.pavelnovak.myappvironit;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.Fragment;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+
+import com.twitter.sdk.android.core.Twitter;
 
 import javax.inject.Inject;
 
@@ -11,6 +14,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import dagger.android.HasBroadcastReceiverInjector;
+import dagger.android.HasFragmentInjector;
 import dagger.android.HasServiceInjector;
 import vironit.pavelnovak.myappvironit.di.components.AppComponent;
 import vironit.pavelnovak.myappvironit.di.components.DaggerAppComponent;
@@ -44,6 +48,8 @@ public class App extends Application implements HasActivityInjector, HasBroadcas
                 .build();
 
         component.inject(this);
+
+        Twitter.initialize(this);
     }
 
     @Override
@@ -60,4 +66,5 @@ public class App extends Application implements HasActivityInjector, HasBroadcas
     public AndroidInjector<Service> serviceInjector() {
         return serviceDispatchingAndroidInjector;
     }
+
 }

@@ -3,6 +3,7 @@ package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fra
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -245,6 +246,17 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
         if (activity != null){
             if (activity instanceof BaseActivity){
                 getPresenter().onRequestPermissionsResult(requestCode, permissions, grantResults, (BaseActivity) activity);
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Activity activity = getActivity();
+        if (activity != null) {
+            if (activity instanceof BaseActivity) {
+                getPresenter().onActivityResult(requestCode, resultCode, data, (BaseActivity) activity);
             }
         }
     }

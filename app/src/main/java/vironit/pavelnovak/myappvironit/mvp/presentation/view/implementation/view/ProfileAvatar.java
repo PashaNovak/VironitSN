@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
+import android.util.AttributeSet;
 
 import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.utils.ConverterImageUtil;
@@ -20,6 +21,12 @@ public class ProfileAvatar extends AppCompatImageView {
 
     public ProfileAvatar(Context context) {
         super(context);
+        init();
+    }
+
+    public ProfileAvatar(Context context, AttributeSet attrs)
+    {
+        super(context, attrs);
         init();
     }
 
@@ -37,7 +44,7 @@ public class ProfileAvatar extends AppCompatImageView {
         Paint photoPaint = new Paint();
         photoPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         Bitmap photo = ConverterImageUtil.convertToBitmap(
-                ContextCompat.getDrawable(getContext(), R.drawable.if_facebook_circle_2), (int) SIZE, (int) SIZE);
+                ContextCompat.getDrawable(getContext(), R.drawable.ic_chat), (int) SIZE, (int) SIZE);
 
         setScaleType(ScaleType.CENTER_CROP);
         canvas.drawBitmap(photo, 0, 0, photoPaint);

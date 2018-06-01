@@ -7,9 +7,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
 import vironit.pavelnovak.myappvironit.adapters.feeds.view_holders.base.BaseFeedViewHolder;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.feed.FeedPost;
 
 public class FeedPostViewHolder extends BaseFeedViewHolder {
@@ -25,10 +27,12 @@ public class FeedPostViewHolder extends BaseFeedViewHolder {
 
     public FeedPostViewHolder(View itemView) {
         super(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     @Override
     public void bindView(IItemFeed typeFeedInterface) {
+        System.out.println( "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + ((FeedPost) typeFeedInterface).getPostTitle() + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         postTitle.setText(((FeedPost) typeFeedInterface).getPostTitle());
         Glide.with(itemView.getContext())
                 .load(((FeedPost) typeFeedInterface).getPostImageId())

@@ -18,6 +18,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 import io.reactivex.Scheduler;
 import vironit.pavelnovak.myappvironit.constants.IAppConstants;
@@ -71,6 +72,7 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
 
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
+        ButterKnife.bind(this);
     }
 
     @Override

@@ -56,7 +56,7 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
         selectedLoginButton = IAppConstants.FACEBOOK;
         LoginManager.getInstance().logInWithPublishPermissions(activity,
                 Collections.singletonList("public_profile"));
-        mCallbackManager = CallbackManager.Factory.create();
+        //mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager,
                 new FacebookCallback<LoginResult>() {
                     @Override
@@ -141,5 +141,17 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
             default:
                 break;
         }
+    }
+
+    @NonNull
+    @Override
+    public String getString(int strResId) {
+        return null;
+    }
+
+    @NonNull
+    @Override
+    public String getString(int resId, @NonNull Object... formatArgs) {
+        return null;
     }
 }

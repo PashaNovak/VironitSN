@@ -1,6 +1,7 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment;
 
 import android.net.Uri;
+import android.widget.ImageView;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.bumptech.glide.Glide;
@@ -32,6 +33,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements I
     @BindView(R.id.profile_photo)
     ProfileAvatar profilePhoto;
 
+    @BindView(R.id.test_photo)
+    ImageView testPhoto;
+
     public static ProfileFragment getInstance(){
         return new ProfileFragment();
     }
@@ -51,7 +55,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> implements I
         if (photoPath != null || photoUri != null){
             if (photoUri != null){
                 Glide.with(this).load(photoUri).into(profilePhoto);
-            } else Glide.with(this).load(photoPath).into(profilePhoto);
+            } else {
+                Glide.with(this).load(photoPath).into(testPhoto);
+            }
         }
     }
 

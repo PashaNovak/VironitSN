@@ -19,23 +19,31 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop" />-->
 
-        <vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.view.ProfileAvatar
-            android:id="@+id/profile_photo"
-            android:layout_height="150dp"
-            android:layout_width="150dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-75dp"
-            android:elevation="5dp"
-            android:scaleType="centerCrop"
-            app:civ_border_color="@color/colorAccent"/>
+
 
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:id="@+id/profile_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/side_user_profile_bar"
             android:elevation="4dp"
             android:paddingBottom="30dp">
+
+            <vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.view.ProfileAvatar
+                android:id="@+id/profile_photo"
+                android:layout_height="100dp"
+                android:layout_width="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-15dp"
+                android:elevation="5dp"
+                android:scaleType="centerCrop"
+                app:civ_border_color="@color/colorAccent"/>
+
+            <ImageView
+                android:id="@+id/test_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

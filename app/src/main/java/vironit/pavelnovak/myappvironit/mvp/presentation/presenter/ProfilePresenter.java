@@ -26,6 +26,7 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPr
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.fragment.IProfileFragment;
 import vironit.pavelnovak.myappvironit.utils.AndroidVersionUtil;
+import vironit.pavelnovak.myappvironit.utils.AppLog;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -107,12 +108,34 @@ public class ProfilePresenter extends BaseAppPresenter<IProfileFragment> {
         return imageURI;
     }
 
-    @Override
+    /*@Override
     public void onActivityResult(int requestCode,
                                  int resultCode,
                                  Intent data,
                                  @NonNull BaseActivity baseActivity) {
+        AppLog.logPresenter(this);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         super.onActivityResult(requestCode, resultCode, data, baseActivity);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_IMAGE_CAPTURE_CAMERA:
+                    getViewState().setUserPhoto(photoFilePath, null);
+                    break;
+                case REQUEST_IMAGE_CAPTURE_GALLERY:
+                    getViewState().setUserPhoto(null, data.getData());
+                    break;
+                case REQUEST_OPEN_SETTINGS:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }*/
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data, @NonNull BaseActivity activity) {
+        AppLog.logPresenter(this);
+        super.onActivityResult(requestCode, resultCode, data, activity);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_IMAGE_CAPTURE_CAMERA:
@@ -196,5 +219,17 @@ public class ProfilePresenter extends BaseAppPresenter<IProfileFragment> {
 
         photoFilePath = image.getAbsolutePath();
         return image;
+    }
+
+    @NonNull
+    @Override
+    public String getString(int strResId) {
+        return null;
+    }
+
+    @NonNull
+    @Override
+    public String getString(int resId, @NonNull Object... formatArgs) {
+        return null;
     }
 }
