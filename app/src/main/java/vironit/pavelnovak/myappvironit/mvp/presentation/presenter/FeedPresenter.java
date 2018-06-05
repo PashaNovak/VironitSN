@@ -36,7 +36,7 @@ public class FeedPresenter extends BaseAppPresenter<IFeedFragment> {
 
     public void loadNews(int page, int pageSize) {
         getViewState().showProgress();
-        addLiteDisposable(mIFeedInteractor.getFeeds()
+        addLiteDisposable(mIFeedInteractor.getFeeds(page, pageSize)
                 .observeOn(mUIScheduler)
                 .doOnSuccess(list -> getViewState().onGetDataSuccess(list))
                 .doFinally(() -> getViewState().hideProgress())

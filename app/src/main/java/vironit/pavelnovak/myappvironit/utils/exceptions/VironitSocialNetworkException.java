@@ -58,4 +58,14 @@ public class VironitSocialNetworkException extends Exception {
         super(message);
         this.status = status;
     }
+
+    @Nullable
+    public ErrorStatus getErrorStatus(){
+        return status;
+    }
+
+    @Nullable
+    public Integer getStringResId(){
+        return resId;
+    }
 }

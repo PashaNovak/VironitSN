@@ -5,5 +5,5 @@ import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Data;
 
 public interface IFeedInteractor {
 
-    Single<Data> getFeeds();
+    Single<Data> getFeeds(int page, int pageSize);
 }

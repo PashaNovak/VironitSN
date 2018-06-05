@@ -16,7 +16,7 @@ public class FeedInteractorImpl implements IFeedInteractor{
     }
 
     @Override
-    public Single<Data> getFeeds() {
-        return mIFeedRepository.getFeeds("ru");
+    public Single<Data> getFeeds(int page, int perPage) {
+        return mIFeedRepository.getFeeds("ru", page, perPage);
     }
 }

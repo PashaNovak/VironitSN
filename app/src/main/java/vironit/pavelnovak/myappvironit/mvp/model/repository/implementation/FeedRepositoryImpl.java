@@ -22,8 +22,8 @@ public class FeedRepositoryImpl implements IFeedRepository {
     }
 
     @Override
-    public Single<Data> getFeeds(String countryCode) {
-        return mApiInterface.getNews(countryCode)
+    public Single<Data> getFeeds(String countryCode, int page, int perPage) {
+        return mApiInterface.getNews(countryCode, page, perPage)
                 .subscribeOn(mIOScheduler);
     }
 }

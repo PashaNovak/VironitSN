@@ -11,7 +11,7 @@ public enum ErrorStatus {
     final @StringRes int stringResId;
 
     ErrorStatus(int server_error_code, int stringResId) {
-        SERVER_ERROR_CODE = server_error_code;
+        this.SERVER_ERROR_CODE = server_error_code;
         this.stringResId = stringResId;
 
     }

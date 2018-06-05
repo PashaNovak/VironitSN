@@ -16,38 +16,58 @@ public abstract class AppLog {
 
     public static void logPresenter(@NonNull BasePresenter presenter){
         if (isLogEnabled()){
-            Log.i(getTag(APP_TAG), getInfo(presenter));
-        } else Log.i(getTag(APP_TAG), "isLogEnabled false");
+            Log.i(getTag(), getInfo(presenter));
+        } else Log.i(getTag(), "isLogEnabled false");
     }
 
-    public static void logPresenter(@NonNull BasePresenter presenter, String message) {
+    public static void logPresenter(@NonNull BasePresenter presenter, @NonNull String message) {
         //TODO
         if (isLogEnabled()) {
-            Log.i(getTag(APP_TAG), message);
+            Log.i(getTag(), message);
         }
     }
-    public static void logPresenter(@NonNull BasePresenter presenter,Throwable throwable) {
+    public static void logPresenter(@NonNull BasePresenter presenter, @NonNull Exception exception) {
         //TODO
         if (isLogEnabled()) {
-            Log.i(getTag(APP_TAG), throwable.getMessage());
+            Log.i(getTag(), exception.getMessage());
         }
+    }
+
+    public static void logPresenter(@NonNull BasePresenter presenter,
+                                    @Nullable String message,
+                                    @Nullable Throwable throwable){
+        if (isLogEnabled()) {
+            Log.i(getTag(), getInfo(presenter) + createMessageFromThrowableAndMessage(message, throwable));
+        }
+    }
+
+    @NonNull
+    private static String createMessageFromThrowableAndMessage(@Nullable String message, @Nullable Throwable throwable) {
+        return " " + createMessage(message) + " " + createMessageFromThrowable(throwable);
+    }
+
+    @NonNull
+    private static String createMessageFromThrowable(@Nullable Throwable throwable) {
+        return throwable != null
+                ? (throwable.getClass().getName() + " " + createMessage(throwable.getMessage()))
+                : "nullable_throwable";
     }
 
     public static void logFragment(@NonNull BaseFragment fragment){
         if (isLogEnabled()){
-            Log.i(getTag(APP_TAG), getInfo(fragment));
-        } else Log.i(getTag(APP_TAG), "isLogEnabled false");
+            Log.i(getTag(), getInfo(fragment));
+        } else Log.i(getTag(), "isLogEnabled false");
     }
 
     public static void logActivity(@NonNull Activity activity){
         if (isLogEnabled()){
-            Log.i(getTag(APP_TAG), getInfo(activity));
-        } else Log.i(getTag(APP_TAG), "isLogEnabled false");
+            Log.i(getTag(), getInfo(activity));
+        } else Log.i(getTag(), "isLogEnabled false");
     }
 
     public static void logObject(Class clazz, @Nullable String message) {
         if (isLogEnabled()) {
-            Log.i(getTag(APP_TAG), clazz.getSimpleName() + "." + getMethodName() + " " + createMessage(message));
+            Log.i(getTag(), clazz.getSimpleName() + "." + getMethodName() + " " + createMessage(message));
         }
     }
 
@@ -82,7 +102,7 @@ public abstract class AppLog {
         return getClassName(object) + "." + getMethodName() + "()";
     }
 
-    private static String getTag(String tag){
-        return tag;
+    private static String getTag(){
+        return APP_TAG;
     }
 }

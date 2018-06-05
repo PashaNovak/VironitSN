@@ -5,5 +5,5 @@ import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Data;
 
 public interface IFeedRepository {
 
-    Single<Data> getFeeds(String countryCode);
+    Single<Data> getFeeds(String countryCode, int page, int perPage);
 }
