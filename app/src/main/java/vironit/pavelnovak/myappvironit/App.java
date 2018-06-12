@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 
+import com.facebook.stetho.Stetho;
 import com.twitter.sdk.android.core.Twitter;
 
 import javax.inject.Inject;
@@ -50,6 +51,7 @@ public class App extends Application implements HasActivityInjector, HasBroadcas
         component.inject(this);
 
         Twitter.initialize(this);
+        Stetho.initializeWithDefaults(this);
     }
 
     @Override

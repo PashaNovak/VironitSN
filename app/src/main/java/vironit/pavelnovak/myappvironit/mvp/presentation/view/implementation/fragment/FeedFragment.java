@@ -1,5 +1,6 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment;
 
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,38 +8,27 @@ import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import vironit.pavelnovak.myappvironit.R;
+import vironit.pavelnovak.myappvironit.adapters.base.base_adapters.BasePaginationRecyclerViewAdapter;
 import vironit.pavelnovak.myappvironit.adapters.feeds.FeedAdapter;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Data;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.FeedPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.base.BaseFragment;
+import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.base.BasePaginationFragment;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.fragment.IFeedFragment;
 
-public class FeedFragment extends BaseFragment<FeedPresenter> implements IFeedFragment {
+public class FeedFragment extends BasePaginationFragment<FeedPresenter> implements IFeedFragment {
 
     @InjectPresenter
     FeedPresenter mFeedPresenter;
 
-    @BindView(R.id.feed_recycler_view)
-    RecyclerView mFeedRecyclerView;
-
-    @BindView(R.id.loading_spinner_feed)
-    ProgressBar loadingSpinner;
-
-    private static final int PAGE_SIZE = 10;
-
-    private int mPage = 0;
-
-    private FeedAdapter adapter;
-
-    private LinearLayoutManager llm;
-
-    public static FeedFragment getInstance(){
-        return new FeedFragment();
-    }
+    private FeedAdapter mFeedAdapter;
 
     @Override
     public int getLayoutResId() {
@@ -50,61 +40,34 @@ public class FeedFragment extends BaseFragment<FeedPresenter> implements IFeedFr
         return mFeedPresenter;
     }
 
-    @Override
-    public void onGetDataFailure() {
-
-    }
-
-
-    @Override
-    protected void initBeforePresenterAttach() {
-        super.initBeforePresenterAttach();
-        setLoadingSpinnerState(View.VISIBLE);
-        llm = new LinearLayoutManager(this.getContext());
-        mFeedRecyclerView.setLayoutManager(llm);
-        mFeedRecyclerView.addOnScrollListener(getOnRecyclerScrollListener());
-        mFeedPresenter.loadNews(++mPage, PAGE_SIZE);
-    }
-
-    private RecyclerView.OnScrollListener getOnRecyclerScrollListener() {
-        return new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                int visibleItemCount = llm.getChildCount();
-                int totalItemCount = llm.getItemCount();
-                int firstVisibleItemPosition = llm.findFirstVisibleItemPosition();
-                if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
-                        && firstVisibleItemPosition >= 0
-                        && totalItemCount >= PAGE_SIZE) {
-                    mFeedPresenter.loadNews(++mPage, PAGE_SIZE);
-                }
-            }
-        };
+    public static FeedFragment getInstance(){
+        return new FeedFragment();
     }
 
     @Override
-    public void onGetDataSuccess(Data newsFeedData) {
-        if (mPage > 1) {
-            adapter.addNews(mFeedPresenter.parseArticles(newsFeedData.getArticles()));
-            adapter.notifyDataSetChanged();
-        } else {
-            adapter =
-                    new FeedAdapter(mFeedPresenter.parseArticles(newsFeedData.getArticles()));
-            mFeedRecyclerView.setAdapter(adapter);
-            setLoadingSpinnerState(View.GONE);
-        }
+    protected void initViewBeforePresenterAttach() {
+        super.initViewBeforePresenterAttach();
+    }
 
+    @Nullable
+    @Override
+    protected BasePaginationRecyclerViewAdapter getBasePaginationRecyclerViewAdapter() {
+        return null;
     }
 
     @Override
-    public void setLoadingSpinnerState(int visibility) {
-        loadingSpinner.setVisibility(visibility);
+    protected void setPaginationRecyclerAdapter() {
+        mFeedAdapter = new FeedAdapter();
+        recyclerView.setAdapter(mFeedAdapter);
+    }
+
+    @Override
+    public void addData(List<Article> data) {
+        mFeedAdapter.addData(data);
+    }
+
+    @Override
+    protected void setLayoutManager() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 }

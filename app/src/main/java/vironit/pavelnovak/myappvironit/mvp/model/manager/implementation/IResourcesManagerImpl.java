@@ -6,15 +6,15 @@ import android.support.annotation.StringRes;
 
 import javax.inject.Inject;
 
-import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IResourcesManager;
 
-public class ResourcesManagerImpl implements ResourcesManager {
+public class IResourcesManagerImpl implements IResourcesManager {
 
     @NonNull
     private final Context mAppContext;
 
     @Inject
-    public ResourcesManagerImpl(@NonNull Context AppContext) {
+    public IResourcesManagerImpl(@NonNull Context AppContext) {
         mAppContext = AppContext;
     }
 

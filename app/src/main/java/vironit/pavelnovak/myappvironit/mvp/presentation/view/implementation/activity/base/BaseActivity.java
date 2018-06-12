@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 import io.reactivex.Scheduler;
 import vironit.pavelnovak.myappvironit.constants.IAppConstants;
-import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IResourcesManager;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
 import vironit.pavelnovak.myappvironit.utils.AppLog;
@@ -46,7 +46,7 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
     protected Scheduler mUIScheduler;
 
     @Inject
-    ResourcesManager mResourcesManager;
+    IResourcesManager mIResourcesManager;
 
     protected abstract P getPresenter();
 
@@ -67,12 +67,61 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppLog.logActivity(this);
-
         AndroidInjection.inject(this);
 
         super.onCreate(savedInstanceState);
+
+        if (getIntent() != null) {
+            if (getIntent().getExtras() != null) {
+                initFromIntentExtras(getIntent().getExtras());
+            }
+        }
+
+        initBeforeLayoutAttach();
         setContentView(getLayoutResId());
         ButterKnife.bind(this);
+        initViewBeforePresenterAttach();
+        getMvpDelegate().onAttach();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        getMvpDelegate().onAttach();
+    }
+
+    @Override
+    protected void onStart() {
+        AppLog.logActivity(this);
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        AppLog.logActivity(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        AppLog.logActivity(this);
+        hideKeyboard();
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        AppLog.logActivity(this);
+        hideProgress();
+        hideDialogMessage();
+        hideMessage();
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        AppLog.logActivity(this);
+        super.onDestroy();
     }
 
     @Override
@@ -175,6 +224,17 @@ public abstract class BaseActivity<P extends BaseAppPresenter> extends MvpAppCom
         if (mDialog != null && mDialog.isShowing()) {
             mDialog.dismiss();
         }
+    }
+
+    protected void initFromIntentExtras(@NonNull Bundle bundle) {
+
+    }
+
+    protected void initBeforeLayoutAttach() {
+
+    }
+
+    protected void initViewBeforePresenterAttach() {
 
     }
 }

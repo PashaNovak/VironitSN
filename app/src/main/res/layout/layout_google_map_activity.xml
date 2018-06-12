@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/v_root_google_map_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.presentation.view.implementation.activity.GoogleMapsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/google_map_fragment"
+            tools:context=".MapsActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+        <RelativeLayout
+            android:id="@+id/rl_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:elevation="10dp"
+            android:background="@drawable/search_bar_white_border">
+
+            <ImageView
+                android:id="@+id/iv_search_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_search_icon"
+                android:layout_centerVertical="true"/>
+
+            <AutoCompleteTextView
+                android:id="@+id/edt_search_input_google_maps"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/iv_search_icon_view"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/default_text_size"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:hint="Поиск"
+                android:imeOptions="actionSearch"
+                android:inputType="text"/>
+
+            <ImageView
+                android:id="@+id/iv_cancel_search_icon_view"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/edt_search_input_google_maps"
+                android:src="@drawable/ic_cancel_search_icon"/>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/i_btn_get_device_current_position"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/current_device_position_white_border"
+            android:src="@drawable/ic_gps"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="45dp"
+            android:layout_marginEnd="15dp"/>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

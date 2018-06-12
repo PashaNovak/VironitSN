@@ -10,10 +10,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
-import vironit.pavelnovak.myappvironit.adapters.feeds.view_holders.base.BaseFeedViewHolder;
+import vironit.pavelnovak.myappvironit.adapters.base.base_view_holders.BaseViewHolder;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.feed.FeedAd;
 
-public class FeedAdViewHolder extends BaseFeedViewHolder {
+public class FeedAdViewHolder extends BaseViewHolder<Article> {
 
     @BindView(R.id.ad_image)
     ImageView adImage;
@@ -27,10 +28,10 @@ public class FeedAdViewHolder extends BaseFeedViewHolder {
     }
 
     @Override
-    public void bindView(IItemFeed typeFeedInterface) {
+    public void bindView(Article article) {
         Glide.with(itemView.getContext())
-                .load(((FeedAd) typeFeedInterface).getAdImageId())
+                .load(article.getUrlToImage())
                 .into(adImage);
-        adDescription.setText(((FeedAd) typeFeedInterface).getDescription());
+        adDescription.setText(article.getDescription());
     }
 }

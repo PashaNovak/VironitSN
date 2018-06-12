@@ -1,7 +1,5 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base;
 
-import android.content.res.Resources;
-
 import io.reactivex.annotations.Nullable;
 import io.reactivex.functions.Consumer;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;

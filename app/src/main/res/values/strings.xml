@@ -22,14 +22,20 @@
     <string name="fb_login_protocol_scheme">1e07b1a062c37b6fa0d3a925b02b9efb</string>
     // Twitter log in
     <string name="com.twitter.sdk.android.CONSUMER_KEY">f2ZDGC4ZQvxV7V9ZaRDnunV7s</string>
-    <string name="com.twitter.sdk.android.CONSUMER_SECRET">0OedgJY8aJA37h5dO72RwmonnJH6gSJb3EP2UzQAijkBBS9rhJ
-</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">0OedgJY8aJA37h5dO72RwmonnJH6gSJb3EP2UzQAijkBBS9rhJ</string>
     // Google sign in
-    <string name="server_client_id">928543107174-j6e8hd0b00cp1csqt6pu38kg16008cqv.apps.googleusercontent.com</string>
+    <string name="server_client_id">928543107174-289o3af371vc7kl7sq7k74fbhjg7mlql.apps.googleusercontent.com</string>
+    // Google Maps Api key
+    <string name="google_maps_api_key">AIzaSyAf36OxDrjzXgZdvuamCy0chi16ZqHWAkc</string>
 
-    <string name="unknown_error">Неизвестная</string>
+    <string name="unknown_error">Неизвестная ошибка!</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="no_google_request">Невозможно сделать запрос к Google Maps</string>
+    <string name="unknown_device_loation">Ошибка определения местоположения</string>
+    <string name="current_device_location_message">Ваше местоположение</string>
+    <string name="go_to_google_map">Go to GOOGLE map</string>
 
 </resources>

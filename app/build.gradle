@@ -17,12 +17,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "boolean", "IS_LOG_ENABLED", "false"
             buildConfigField "String", "API_URL", API_URL_RELEASE
+            buildConfigField "int", "DATA_BASE_VERSION", DATA_BASE_VERSION
         }
         debug {
             minifyEnabled false
             debuggable true
             buildConfigField "boolean", "IS_LOG_ENABLED", "true"
             buildConfigField "String", "API_URL", API_URL_TEST
+            buildConfigField "int", "DATA_BASE_VERSION", DATA_BASE_VERSION
         }
     }
     compileOptions {
@@ -59,7 +61,13 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:4.33.0'
 
     //Google
-    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation "com.google.android.gms:play-services-auth:$googlePlayServiceVersion"
+
+    //GoogleMap
+    implementation "com.google.android.gms:play-services-maps:$googlePlayServiceVersion"
+    implementation 'com.google.maps.android:android-maps-utils:0.4+'
+    implementation "com.google.android.gms:play-services-location:$googlePlayServiceVersion"
+    implementation "com.google.android.gms:play-services-places:$googlePlayServiceVersion"
 
     //CircleImage
     implementation 'de.hdodenhof:circleimageview:2.2.0'
@@ -90,6 +98,16 @@ dependencies {
     //OkHttp
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp3Version"
+
+    //Room
+    implementation "android.arch.persistence.room:runtime:1.1.1-rc1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1-rc1"
+    implementation "android.arch.persistence.room:rxjava2:1.1.0"
+
+    //Stetho
+    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'

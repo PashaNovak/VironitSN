@@ -26,7 +26,7 @@ public abstract class AppLog {
             Log.i(getTag(), message);
         }
     }
-    public static void logPresenter(@NonNull BasePresenter presenter, @NonNull Exception exception) {
+    public static void logPresenter(@NonNull BasePresenter presenter, @NonNull Throwable exception) {
         //TODO
         if (isLogEnabled()) {
             Log.i(getTag(), exception.getMessage());

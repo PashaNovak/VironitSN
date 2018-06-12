@@ -5,6 +5,7 @@ import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 import vironit.pavelnovak.myappvironit.di.annotations.ActivityScope;
 import vironit.pavelnovak.myappvironit.di.annotations.FragmentScope;
+import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.GoogleMapsActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.LoginActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.MainActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.SplashActivity;
@@ -27,6 +28,10 @@ public interface AppActivitiesModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = {ActivityModule.class})
     MainActivity mainActivityInjector();
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = {ActivityModule.class})
+    GoogleMapsActivity googleMapsActivityInjector();
 
     @ActivityScope
     @ContributesAndroidInjector(modules = {ActivityModule.class})

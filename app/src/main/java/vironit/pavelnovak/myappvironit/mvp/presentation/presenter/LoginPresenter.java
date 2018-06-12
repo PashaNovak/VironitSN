@@ -11,9 +11,13 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.twitter.sdk.android.core.Callback;
@@ -23,6 +27,7 @@ import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import javax.inject.Inject;
@@ -54,7 +59,8 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
 
     public void facebookBtnClicked(@NonNull Activity activity) {
         selectedLoginButton = IAppConstants.FACEBOOK;
-        LoginManager.getInstance().logInWithPublishPermissions(activity,
+        LoginManager.getInstance().logInWithReadPermissions(
+                activity,
                 Collections.singletonList("public_profile"));
         //mCallbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(mCallbackManager,
@@ -97,8 +103,8 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
     }
 
     public void googleBtnClicked(@NonNull Activity activity) {
-        selectedLoginButton = IAppConstants.GOOGLE;
-        activity.startActivityForResult(mGoogleSignInClient.getSignInIntent(), IAppConstants.RC_SIGN_IN);
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        activity.startActivityForResult(signInIntent, IAppConstants.RC_SIGN_IN);
     }
 
     private void handleSignInResultGoogle(Task<GoogleSignInAccount> competedTask) {
@@ -108,6 +114,8 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
             getViewState().showSuccessMessage();
         } catch (ApiException e) {
             AppLog.logPresenter(LoginPresenter.this);
+            e.printStackTrace();
+            System.out.println(e.getStatusCode());
             getViewState().showFailMessage();
         }
     }
@@ -146,12 +154,6 @@ public class LoginPresenter extends BaseAppPresenter<ILoginView> {
     @NonNull
     @Override
     public String getString(int strResId) {
-        return null;
-    }
-
-    @NonNull
-    @Override
-    public String getString(int resId, @NonNull Object... formatArgs) {
         return null;
     }
 }

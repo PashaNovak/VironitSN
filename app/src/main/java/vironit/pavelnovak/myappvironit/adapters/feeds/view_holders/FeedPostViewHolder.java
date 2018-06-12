@@ -10,11 +10,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import vironit.pavelnovak.myappvironit.R;
 import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
-import vironit.pavelnovak.myappvironit.adapters.feeds.view_holders.base.BaseFeedViewHolder;
+import vironit.pavelnovak.myappvironit.adapters.base.base_view_holders.BaseViewHolder;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.feed.FeedPost;
 
-public class FeedPostViewHolder extends BaseFeedViewHolder {
+public class FeedPostViewHolder extends BaseViewHolder<Article> {
 
     @BindView(R.id.post_image)
     ImageView postImage;
@@ -31,12 +31,11 @@ public class FeedPostViewHolder extends BaseFeedViewHolder {
     }
 
     @Override
-    public void bindView(IItemFeed typeFeedInterface) {
-        System.out.println( "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + ((FeedPost) typeFeedInterface).getPostTitle() + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        postTitle.setText(((FeedPost) typeFeedInterface).getPostTitle());
+    public void bindView(Article article) {
+        postTitle.setText(article.getTitle());
+        postDescription.setText(article.getDescription());
         Glide.with(itemView.getContext())
-                .load(((FeedPost) typeFeedInterface).getPostImageId())
+                .load(article.getUrlToImage())
                 .into(postImage);
-        postDescription.setText(((FeedPost) typeFeedInterface).getPostDescription());
     }
 }

@@ -1,25 +1,19 @@
 package vironit.pavelnovak.myappvironit.mvp.presentation.presenter;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.arellomobile.mvp.InjectViewState;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import vironit.pavelnovak.myappvironit.App;
-import vironit.pavelnovak.myappvironit.adapters.feeds.IItemFeed;
 import vironit.pavelnovak.myappvironit.mvp.model.interactor.interfaces.IFeedInteractor;
-import vironit.pavelnovak.myappvironit.mvp.model.repository.dto.Article;
-import vironit.pavelnovak.myappvironit.mvp.model.repository.feed.FeedPost;
-import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
+import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BasePaginationPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.fragment.IFeedFragment;
 import vironit.pavelnovak.myappvironit.utils.AppLog;
 
 @InjectViewState
-public class FeedPresenter extends BaseAppPresenter<IFeedFragment> {
+public class FeedPresenter extends BasePaginationPresenter<IFeedFragment> {
 
     @Inject
     IFeedInteractor mIFeedInteractor;
@@ -34,38 +28,39 @@ public class FeedPresenter extends BaseAppPresenter<IFeedFragment> {
         //loadNews();
     }
 
-    public void loadNews(int page, int pageSize) {
-        getViewState().showProgress();
-        addLiteDisposable(mIFeedInteractor.getFeeds(page, pageSize)
+    @Override
+    protected void loadData(int totalItemCount, @Nullable String lastItemId) {
+        super.loadData(totalItemCount, lastItemId);
+        addPaginationDisposable(mIFeedInteractor.getFeeds(totalItemCount / getItemsCountPerPage(), getItemsCountPerPage())
                 .observeOn(mUIScheduler)
-                .doOnSuccess(list -> getViewState().onGetDataSuccess(list))
-                .doFinally(() -> getViewState().hideProgress())
-                .subscribe(list -> AppLog.logPresenter(this,"OOOOOKKKKK"),
-                        throwable -> AppLog.logPresenter(this,throwable)));
+                .doOnSuccess(dataElement -> setNextPageAllow(dataElement.getArticles()))
+                .doOnSuccess(dataElement -> getViewState().addData(dataElement.getArticles()))
+                .doFinally(() -> getViewState().hidePaginationProgress())
+                .subscribe(list -> AppLog.logPresenter(this, "SUCCESS!"), this));
     }
 
-    public List<IItemFeed> parseArticles(List<Article> articleList) {
-        List<IItemFeed> resultList = new ArrayList<>();
-        for (Article article : articleList) {
-            resultList.add(new FeedPost(
-                    article.getTitle(),
-                    article.getDescription(),
-                    article.getUrlToImage()
-            ));
-        }
-        return resultList;
-    }
-
-    @NonNull
     @Override
-    public String getString(int strResId) {
-        return null;
+    protected int getItemsCountPerPage() {
+        return 8;
     }
 
-    @NonNull
     @Override
-    public String getString(int resId, @NonNull Object... formatArgs) {
-        return null;
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        refreshData();
     }
+
+    //    public List<IItemFeed> parseArticles(List<Article> articleList) {
+//        List<IItemFeed> resultList = new ArrayList<>();
+//        for (Article article : articleList) {
+//            resultList.add(new FeedPost(
+//                    article.getTitle(),
+//                    article.getDescription(),
+//                    article.getUrlToImage()
+//            ));
+//        }
+//        return resultList;
+//    }
+
 }
 

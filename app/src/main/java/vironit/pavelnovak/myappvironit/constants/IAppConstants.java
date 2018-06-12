@@ -21,4 +21,9 @@ public interface IAppConstants {
     long WRITE_CONNECT_TIMEOUT_SECONDS = 20;
 
     long CACH_SIZE = 20 * 1024 * 1024;
+
+    int DEFAULT_ITEMS_COUNT_PER_PAGE = 3;
+
+    float DEFAULT_GOOGLE_MAP_CAMERA_ZOOM = 15f;
+    int GOOGLE_REQUEST_CODE = 402;
 }

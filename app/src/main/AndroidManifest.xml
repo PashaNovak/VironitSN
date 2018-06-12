@@ -4,8 +4,13 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:name=".App"
@@ -33,6 +38,10 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_api_key"/>
+
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -58,6 +67,7 @@
 
         <activity android:name="vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.TestActivity"/>
         <activity android:name=".mvp.presentation.view.implementation.activity.LoginActivity"/>
+        <activity android:name=".mvp.presentation.view.implementation.activity.GoogleMapsActivity"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

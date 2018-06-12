@@ -7,6 +7,8 @@ buildscript {
     ext.autoValueVersion = '1.4.1'
     ext.gsonVersion = '2.8.2'
 
+    ext.googlePlayServiceVersion = '15.0.1'
+
     repositories {
         google()
         jcenter()

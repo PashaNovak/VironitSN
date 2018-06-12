@@ -226,10 +226,4 @@ public class ProfilePresenter extends BaseAppPresenter<IProfileFragment> {
     public String getString(int strResId) {
         return null;
     }
-
-    @NonNull
-    @Override
-    public String getString(int resId, @NonNull Object... formatArgs) {
-        return null;
-    }
 }

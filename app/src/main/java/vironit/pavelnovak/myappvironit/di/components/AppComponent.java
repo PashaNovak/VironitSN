@@ -8,6 +8,7 @@ import vironit.pavelnovak.myappvironit.App;
 import vironit.pavelnovak.myappvironit.di.modules.ApiModule;
 import vironit.pavelnovak.myappvironit.di.modules.AppActivitiesModule;
 import vironit.pavelnovak.myappvironit.di.modules.ApplicationModule;
+import vironit.pavelnovak.myappvironit.di.modules.DatabaseModule;
 import vironit.pavelnovak.myappvironit.di.modules.InteractorModule;
 import vironit.pavelnovak.myappvironit.di.modules.ManagerModule;
 import vironit.pavelnovak.myappvironit.di.modules.ParseModule;
@@ -17,6 +18,7 @@ import vironit.pavelnovak.myappvironit.di.modules.SNModule;
 import vironit.pavelnovak.myappvironit.di.modules.SchedulersModule;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.ChatPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.FeedPresenter;
+import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.GoogleMapsPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.LoginPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.MainPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.ProfilePresenter;
@@ -33,7 +35,8 @@ import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.frag
         SNModule.class,
         RetrofitModule.class,
         ParseModule.class,
-        ApiModule.class})
+        ApiModule.class,
+        DatabaseModule.class})
 
 public interface AppComponent {
 
@@ -50,6 +53,8 @@ public interface AppComponent {
     void inject(ChatPresenter chatPresenter);
 
     void inject(MainPresenter mainPresenter);
+
+    void inject(GoogleMapsPresenter googleMapsPresenter);
 
     @Component.Builder
     interface Builder{

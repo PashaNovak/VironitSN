@@ -24,7 +24,7 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import dagger.android.support.AndroidSupportInjection;
-import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IResourcesManager;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base.BaseAppPresenter;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
@@ -43,7 +43,7 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     public abstract int getLayoutResId();
 
     @Inject
-    protected ResourcesManager mResourcesManager;
+    protected IResourcesManager mIResourcesManager;
 
     protected abstract P getPresenter();
 
@@ -82,7 +82,7 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         AppLog.logFragment(this);
         super.onViewCreated(view, savedInstanceState);
-        initBeforePresenterAttach();
+        initViewBeforePresenterAttach();
         getMvpDelegate().onAttach();
     }
 
@@ -140,20 +140,8 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
         super.onDestroy();
     }
 
-    protected void initBeforeLayout() {
-        AppLog.logFragment(this);
-    }
-
-    protected void initFromArguments(@NonNull Bundle args) {
-        AppLog.logFragment(this);
-    }
-
-    protected void initBeforePresenterAttach() {
-
-    }
-
     protected String getResoursesString(@StringRes int stringId){
-        return mResourcesManager.getString(stringId);
+        return mIResourcesManager.getString(stringId);
     }
 
 
@@ -259,5 +247,22 @@ public abstract class BaseFragment<P extends BaseAppPresenter> extends MvpAppCom
                 getPresenter().onActivityResult(requestCode, resultCode, data, (BaseActivity) activity);
             }
         }
+    }
+
+    protected void initBeforeLayout() {
+        AppLog.logFragment(this);
+    }
+
+    protected void initFromArguments(@NonNull Bundle arg) {
+        AppLog.logFragment(this);
+
+    }
+
+    protected void initViewBeforePresenterAttach() {
+
+    }
+
+    protected String getResourseString(@StringRes int stringId) {
+        return mIResourcesManager.getString(stringId);
     }
 }

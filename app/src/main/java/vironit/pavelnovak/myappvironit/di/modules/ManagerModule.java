@@ -4,12 +4,12 @@ import javax.inject.Singleton;
 
 import dagger.Binds;
 import dagger.Module;
-import vironit.pavelnovak.myappvironit.mvp.model.manager.implementation.ResourcesManagerImpl;
-import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.implementation.IResourcesManagerImpl;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IResourcesManager;
 
 @Module
 public interface ManagerModule {
     @Binds
     @Singleton
-    ResourcesManager providesResourcesManager(ResourcesManagerImpl resourcesManagerImpl);
+    IResourcesManager providesResourcesManager(IResourcesManagerImpl resourcesManagerImpl);
 }

@@ -37,10 +37,4 @@ public class TestPresenter extends BaseAppPresenter<ITestView> {
     public String getString(int strResId) {
         return null;
     }
-
-    @NonNull
-    @Override
-    public String getString(int resId, @NonNull Object... formatArgs) {
-        return null;
-    }
 }

@@ -12,15 +12,22 @@ import android.view.MenuItem;
 
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.entity.CompanyDB;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.entity.DepartmentDB;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.entity.EmployeeDB;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.entity.InsuranceDB;
 import vironit.pavelnovak.myappvironit.mvp.presentation.presenter.MainPresenter;
 import vironit.pavelnovak.myappvironit.R;
-import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivityWithFragments;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.ChatFragment;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.FeedFragment;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.ProfileFragment;
-import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.fragment.base.BaseFragment;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.IMainView;
 
 public class MainActivity extends BaseActivityWithFragments<MainPresenter> implements IMainView, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -46,6 +53,7 @@ public class MainActivity extends BaseActivityWithFragments<MainPresenter> imple
         super.onCreate(savedInstanceState);
         showSelectedFragment(FeedFragment.getInstance());
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        mMainPresenter.addData();
     }
 
     public static void start(@Nullable Context context) {

@@ -3,6 +3,7 @@ package vironit.pavelnovak.myappvironit.mvp.presentation.presenter.base;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 
 import com.arellomobile.mvp.MvpPresenter;
 
@@ -13,12 +14,12 @@ import io.reactivex.Scheduler;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import vironit.pavelnovak.myappvironit.constants.IAppConstants;
-import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.ResourcesManager;
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IResourcesManager;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.interfaces.base.IBaseView;
 import vironit.pavelnovak.myappvironit.mvp.presentation.view.implementation.activity.base.BaseActivity;
 import vironit.pavelnovak.myappvironit.utils.AppLog;
 
-public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter<View> implements ResourcesManager {
+public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter<View> {
 
     private final CompositeDisposable mLiteCompositeDisposable = new CompositeDisposable();
     private final CompositeDisposable mHardCompositeDisposable = new CompositeDisposable();
@@ -36,7 +37,7 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
     protected Scheduler mUIScheduler;
 
     @Inject
-    ResourcesManager mResourcesManager;
+    IResourcesManager mIResourcesManager;
 
     @Override
     public void attachView(View view) {
@@ -94,5 +95,21 @@ public abstract class BasePresenter<View extends IBaseView> extends MvpPresenter
         }
     }
 
+    protected void clearLiteDisposable(){
+        mLiteCompositeDisposable.clear();
+    }
 
+    protected void clearHardDisposable(){
+        mHardCompositeDisposable.clear();
+    }
+
+    protected String getString(@StringRes int resId){
+        return mIResourcesManager.getString(resId);
+    }
+
+    protected final void clearDisposableIfPossible(@Nullable Disposable disposable){
+        if (disposable != null && !disposable.isDisposed()){
+            disposable.dispose();
+        }
+    }
 }
