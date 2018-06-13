@@ -16,6 +16,9 @@ public interface IAppConstants {
 
     int RC_SIGN_IN = 9001;
 
+    String AUTH_CLIENT = "AUTH_CLIENT";
+    String NEWS = "NEWS";
+
     long CONNECT_TIMEOUT_SECONDS = 15;
     long READ_CONNECT_TIMEOUT_SECONDS = 20;
     long WRITE_CONNECT_TIMEOUT_SECONDS = 20;

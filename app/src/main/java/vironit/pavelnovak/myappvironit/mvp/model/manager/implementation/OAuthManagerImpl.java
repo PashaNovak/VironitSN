@@ -1,4 +1,6 @@
 package vironit.pavelnovak.myappvironit.mvp.model.manager.implementation;
 
-public class OAuthManagerImpl {
+import vironit.pavelnovak.myappvironit.mvp.model.manager.interfaces.IOAuthManager;
+
+public class OAuthManagerImpl implements IOAuthManager{
 }

@@ -13,6 +13,7 @@ import vironit.pavelnovak.myappvironit.mvp.model.repository.db.entity.Department
 
 @Dao
 public interface DepartmentDAO {
+
     @Query("SELECT * from DEPARTMENT")
     Single<DepartmentDB> getDepartments();
 

@@ -140,4 +140,17 @@ public   class EmployeeDB {
     public void setDate(@NonNull Date date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return "EmployeeDB{" +
+                "employeeId=" + employeeId +
+                ", departmentId=" + departmentId +
+                ", employeeFirstName='" + employeeFirstName + '\'' +
+                ", employeeMiddleName='" + employeeMiddleName + '\'' +
+                ", employeeLastName='" + employeeLastName + '\'' +
+                ", insurance=" + insurance +
+                ", date=" + date +
+                '}';
+    }
 }

@@ -61,4 +61,13 @@ public class CompanyDB {
     public void setCompanyName(@NonNull String companyName) {
         this.companyName = companyName;
     }
+
+    @Override
+    public String toString() {
+        return "CompanyDB{" +
+                "companyId=" + companyId +
+                ", salary=" + salary +
+                ", companyName='" + companyName + '\'' +
+                '}';
+    }
 }

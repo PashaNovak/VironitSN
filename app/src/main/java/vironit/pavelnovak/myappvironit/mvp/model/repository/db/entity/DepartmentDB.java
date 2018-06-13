@@ -67,4 +67,13 @@ public class DepartmentDB {
     public void setDepartmentName(@NonNull String departmentName) {
         this.departmentName = departmentName;
     }
+
+    @Override
+    public String toString() {
+        return "DepartmentDB{" +
+                "departmentId=" + departmentId +
+                ", companyId=" + companyId +
+                ", departmentName='" + departmentName + '\'' +
+                '}';
+    }
 }

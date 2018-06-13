@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import com.arellomobile.mvp.InjectViewState;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import vironit.pavelnovak.myappvironit.App;
 import vironit.pavelnovak.myappvironit.mvp.model.interactor.interfaces.IFeedInteractor;

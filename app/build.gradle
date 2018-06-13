@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "boolean", "IS_LOG_ENABLED", "false"
             buildConfigField "String", "API_URL", API_URL_RELEASE
+            buildConfigField "String", "API_URL_AUTH", API_URL_AUTH
             buildConfigField "int", "DATA_BASE_VERSION", DATA_BASE_VERSION
         }
         debug {
@@ -24,6 +25,7 @@ android {
             debuggable true
             buildConfigField "boolean", "IS_LOG_ENABLED", "true"
             buildConfigField "String", "API_URL", API_URL_TEST
+            buildConfigField "String", "API_URL_AUTH", API_URL_AUTH
             buildConfigField "int", "DATA_BASE_VERSION", DATA_BASE_VERSION
         }
     }

@@ -7,6 +7,8 @@ import android.arch.persistence.room.TypeConverters;
 import vironit.pavelnovak.myappvironit.BuildConfig;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.db.converters.DateToLongConverter;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.db.converters.LongListToStringConverter;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.dao.CompanyWithDepartmentsAndEmployeesDAO;
+import vironit.pavelnovak.myappvironit.mvp.model.repository.db.dao.CompanyWithDepatrmentDAO;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.db.dao.CompanyDAO;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.db.dao.DepartmentDAO;
 import vironit.pavelnovak.myappvironit.mvp.model.repository.db.dao.EmployeeDAO;
@@ -21,4 +23,7 @@ public abstract class VironitSocialNetworkDatabase extends RoomDatabase{
     public abstract CompanyDAO getCompanyDAO();
     public abstract DepartmentDAO getDepartmentDAO();
     public abstract EmployeeDAO getEmployeeDAO();
+
+    public abstract CompanyWithDepatrmentDAO getCompanyWithDepatrmentDAO();
+    public abstract CompanyWithDepartmentsAndEmployeesDAO getCompanyWithDepartmentsAndEmployeesDAO();
 }

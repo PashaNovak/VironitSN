@@ -119,5 +119,20 @@ public class MainPresenter extends BaseAppPresenter<IMainView> {
                 .subscribeOn(mIOScheduler)
                 .subscribe(employeeDB -> AppLog.logPresenter(this, employeeDB.getEmployeeFirstName() + " " + employeeDB.getEmployeeLastName()),
                         this);
+
+        vironitSocialNetworkDatabase.getCompanyWithDepatrmentDAO()
+                .getCompanyWithDepartments()
+                .subscribeOn(mIOScheduler)
+                .subscribe(companyAndDepartments -> AppLog.logPresenter(this, companyAndDepartments.toString()), this);
+
+        vironitSocialNetworkDatabase.getCompanyWithDepartmentsAndEmployeesDAO()
+                .getCompanyWithDepartmentsAndEmployees()
+                .subscribeOn(mIOScheduler)
+                .subscribe(companyWithDepartmentsAndEmployees -> AppLog.logPresenter(this, companyWithDepartmentsAndEmployees.toString()), this);
+
+        vironitSocialNetworkDatabase.getCompanyWithDepartmentsAndEmployeesDAO()
+                .getCompanyWithDepartmentsAndEmployeesFromReverse(1L)
+                .subscribeOn(mIOScheduler)
+                .subscribe(companyWithDepartmentsAndEmployeesFromReverse -> AppLog.logPresenter(this, companyWithDepartmentsAndEmployeesFromReverse.toString()), this);
     }
 }
